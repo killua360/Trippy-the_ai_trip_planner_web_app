@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+✈️ Trippy – AI Powered Trip Planner
 
-## Getting Started
+An intelligent AI-powered travel planning web application that generates personalized trip itineraries based on user preferences such as destination, budget, duration, and group size.
 
-First, run the development server:
+Built using modern full-stack technologies with real-time backend and AI integration.
 
-```bash
+🚀 Features
+
+🔐 Authentication with Clerk
+
+🤖 AI-powered itinerary generation
+
+🗺️ Google Places API integration
+
+🏨 Hotel and place recommendations
+
+📍 Interactive trip view pages
+
+💰 Budget-based filtering
+
+👥 Group size customization
+
+📅 Dynamic trip duration selection
+
+☁️ Real-time backend with Convex
+
+🎨 Modern UI with reusable components
+
+🛠️ Tech Stack
+
+Frontend:
+
+Next.js (App Router)
+
+TypeScript
+
+Tailwind CSS
+
+ShadCN UI Components
+
+Backend:
+
+Convex (Database + Serverless Functions)
+
+Authentication:
+
+Clerk
+
+APIs:
+
+Google Places API
+
+AI Model API (custom route)
+
+Deployment:
+
+Vercel
+
+📂 Project Structure
+app/
+  (auth)/
+  create-new-trip/
+  my-trips/
+  view-trip/
+  api/
+
+components/
+context/
+convex/
+hooks/
+lib/
+public/
+⚙️ Installation & Setup
+
+1️⃣ Clone the repository
+
+git clone https://github.com/killua360/Trippy-the_ai_trip_planner_web_app.git
+cd Trippy-the_ai_trip_planner_web_app
+
+2️⃣ Install dependencies
+
+npm install
+
+3️⃣ Create a .env.local file and add:
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CONVEX_URL=
+GOOGLE_PLACE_API_KEY=
+AI_MODEL_API_KEY=
+
+4️⃣ Run the development server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App will run at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
+🧠 How It Works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+User signs in
 
-## Learn More
+User selects:
 
-To learn more about Next.js, take a look at the following resources:
+Destination
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Budget
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Duration
 
-## Deploy on Vercel
+Group size
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+AI generates itinerary
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Google Places enriches results
+
+Data stored in Convex
+
+User can view and manage trips.
+
+📈 Future Improvements
+
+Trip editing functionality
+
+Saved destinations
+
+Weather integration
+
+PDF itinerary export
+
+Expense tracking per trip
+
+AI chat assistant refinement
+
+🌍 Live Demo
+
+trippy-the-ai-trip-planner-web-app.vercel.app
+
+👨‍💻 Author
+
+Rahul Sen
+B.Tech | Full-Stack Developer | AI Enthusiast
