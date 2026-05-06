@@ -95,6 +95,9 @@ function ChatBox(){
         });
 
         console.log("TRIP:", result.data);
+        console.log("FULL RESULT:", result);
+        console.log("RESULT.DATA:", result.data);
+        console.log("TRIP PLAN:", result?.data?.trip_plan);
 
         !isFinal&&setMessages((prev:Message[])=>[...prev,{
             role:'assistant',
@@ -103,16 +106,30 @@ function ChatBox(){
         }]);
 
         if(isFinal){
-            setTripDetail(result?.data?.trip_plan);
-            setTripDetailInfo(result?.data?.trip_plan)
-            const tripId = uuidv4();
-            await SaveTripDetail({
-                tripDetail: result?.data?.trip_plan,
-                tripId: tripId,
-                uid: userDetail?._id
-            })
 
-        }
+    console.log("FULL RESULT:", result);
+    console.log("RESULT.DATA:", result.data);
+    console.log("TRIP PLAN:", result?.data?.trip_plan);
+
+    const tripPlan = result?.data?.trip_plan;
+
+    if(!tripPlan){
+        console.error("trip_plan missing from API response");
+        setLoading(false);
+        return;
+    }
+
+    setTripDetail(tripPlan);
+    setTripDetailInfo(tripPlan);
+
+    const tripId = uuidv4();
+
+    await SaveTripDetail({
+        tripDetail: tripPlan,
+        tripId: tripId,
+        uid: userDetail?._id
+    })
+}
         
         setLoading(false);
     }

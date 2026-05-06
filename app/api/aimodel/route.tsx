@@ -45,10 +45,20 @@ You MUST return JSON only in this format:
 }
 `
 
-const FINAL_PROMPT = `Generate Travel Plan with give details, give me Hotels options list with HotelName,
-Hotel address, Price, hotel image url, geo coordinates, rating, descriptions and suggest its itinerary with placeName, Place Details, Place image Url,
-Geo Coordinates, Place address, ticket Pricing, Time travel each of the location , with each day plan with best time to visit in  strict JSON format.
+const FINAL_PROMPT = `
+Generate a travel plan in STRICT JSON format.
+
+IMPORTANT:
+- Return ONLY valid JSON
+- No markdown
+- No explanations
+- Keep descriptions short
+- Provide only 2 hotels
+- Provide only 2 activities per day
+- Keep itinerary concise
+
 Output Schema:
+
 {
   "trip_plan": {
     "destination": "string",
@@ -56,45 +66,35 @@ Output Schema:
     "origin": "string",
     "budget": "string",
     "group_size": "string",
+
     "hotels": [
       {
         "hotel_name": "string",
         "hotel_address": "string",
         "price_per_night": "string",
-        "hotel_image_url": "string",
-        "geo_coordinates": {
-          "latitude": "number",
-          "longitude": "number"
-        },
         "rating": "number",
         "description": "string"
       }
     ],
+
     "itinerary": [
       {
         "day": "number",
         "day_plan": "string",
-        "best_time_to_visit_day": "string",
+
         "activities": [
           {
             "place_name": "string",
             "place_details": "string",
-            "place_image_url": "string",
-            "geo_coordinates": {
-              "latitude": "number",
-              "longitude": "number"
-            },
-            "place_address": "string",
             "ticket_pricing": "string",
-            "time_travel_each_location": "string",
             "best_time_to_visit": "string"
           }
         ]
       }
     ]
   }
-}`
-
+}
+`;
 
 export async function POST(req: NextRequest){
   const {messages, isFinal }=await req.json();
@@ -114,9 +114,9 @@ export async function POST(req: NextRequest){
 
   try{
     const completion = await openai.chat.completions.create({
-    model: "openai/gpt-4.1-mini",
+    model:"openai/gpt-4.1-mini",
     response_format:{type:'json_object'},
-    max_tokens: 3500, 
+    max_tokens:1000, 
     temperature: 0.7, 
     messages: [
         {

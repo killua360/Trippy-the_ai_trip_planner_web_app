@@ -33,7 +33,7 @@ export const GetUserTrips=query({
 
 export const GetTripById=query({
     args:{
-        uid:v.id('UserTable'),
+        uid:v.string(),
         tripid:v.string()
     },
     handler:async(ctx,args)=>{
