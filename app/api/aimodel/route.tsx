@@ -116,7 +116,7 @@ export async function POST(req: NextRequest){
     const completion = await openai.chat.completions.create({
     model:"openai/gpt-4.1-mini",
     response_format:{type:'json_object'},
-    max_tokens:1000, 
+    max_tokens:700, 
     temperature: 0.7, 
     messages: [
         {
